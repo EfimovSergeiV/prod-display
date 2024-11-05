@@ -1,16 +1,26 @@
 <template>
-  <div class="gallery">
-    <a
-      v-for="(image, index) in images"
-      :key="index"
-      :href="image.deepZoomSrc"
-      :data-pswp-width="image.width"
-      :data-pswp-height="image.height"
-      :data-deep-zoom="JSON.stringify(image.deepZoomData)"
-      class="gallery-item"
-    >
-      <img :src="image.thumbnail" :alt="`Image ${index + 1}`" />
-    </a>
+  <div class="gallery grid grid-cols-6 gap-8 ">
+
+      <a
+        v-for="(image, index) in images"
+        :key="index"
+        :href="image.deepZoomSrc"
+        :data-pswp-width="image.width"
+        :data-pswp-height="image.height"
+        :data-deep-zoom="JSON.stringify(image.deepZoomData)"
+        class="gallery-item "
+      >
+        <div class="w-full flex items-center justify-center">
+          <img :src="image.thumbnail" :alt="`Image ${index + 1}`" class="w-[72px]" />          
+        </div>
+
+        <div class="flex items-center justify-center mt-2">
+          <p class="text-center text-gray-800">5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная</p>
+        </div>
+        
+      </a>
+
+
   </div>
 </template>
 
@@ -24,9 +34,9 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/images/thumb1.jpg',
+    thumbnail: '/draw.webp',
     deepZoomData: {
-      tileSize: 256,
+      tileSize: 128,
       maxZoomLevel: 20,
       // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
       getTileUrl: 'hallo welt'
@@ -36,9 +46,9 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/images/thumb1.jpg',
+    thumbnail: '/draw.webp',
     deepZoomData: {
-      tileSize: 256,
+      tileSize: 128,
       maxZoomLevel: 20,
       // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
       getTileUrl: 'hallo welt'
@@ -48,9 +58,9 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/images/thumb1.jpg',
+    thumbnail: '/draw.webp',
     deepZoomData: {
-      tileSize: 256,
+      tileSize: 128,
       maxZoomLevel: 20,
       // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
       getTileUrl: 'hallo welt'
@@ -100,9 +110,9 @@ onMounted(() => {
 
 <style scoped>
 .gallery {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px; */
 }
 
 .gallery-item img {
