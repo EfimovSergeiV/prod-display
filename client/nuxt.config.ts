@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+  plugins: [
+    { src: '~/plugins/photoswipe.client.js', mode: 'client' },
+    // { src: '~/plugins/navbar.js', mode: 'client' },
+  ],
+
   css: [
     '~/assets/tailwind.css',
     '~/assets/main.css',

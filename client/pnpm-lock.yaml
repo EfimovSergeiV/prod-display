@@ -11,6 +11,12 @@ importers:
       nuxt:
         specifier: ^3.14.0
         version: 3.14.0(@parcel/watcher@2.5.0)(@types/node@22.9.0)(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+      photoswipe:
+        specifier: ^5.4.4
+        version: 5.4.4
+      photoswipe-deep-zoom-plugin:
+        specifier: ^1.1.2
+        version: 1.1.2
       vue:
         specifier: latest
         version: 3.5.12(typescript@5.6.3)
@@ -2404,6 +2410,13 @@ packages:
 
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
+
+  photoswipe-deep-zoom-plugin@1.1.2:
+    resolution: {integrity: sha512-/7JnozaXBxWyDox1nLLlrg2cWv6ZFh5HyRk43wPCScEDcRtexbWtSfBymFdZOw8Zrw4/neZuL8hrcggKds6O6w==}
+
+  photoswipe@5.4.4:
+    resolution: {integrity: sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==}
+    engines: {node: '>= 0.12.0'}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -6081,6 +6094,10 @@ snapshots:
   pathe@1.1.2: {}
 
   perfect-debounce@1.0.0: {}
+
+  photoswipe-deep-zoom-plugin@1.1.2: {}
+
+  photoswipe@5.4.4: {}
 
   picocolors@1.1.1: {}
 
