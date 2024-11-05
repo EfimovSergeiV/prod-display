@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery grid grid-cols-6 gap-8 ">
+  <div class="gallery grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 ">
 
       <a
         v-for="(image, index) in images"
