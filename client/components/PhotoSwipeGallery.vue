@@ -66,18 +66,151 @@ const images = [
       getTileUrl: 'hallo welt'
     },
   },
+  {
+    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
+    width: 2480,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
+    width: 2480,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
+    width: 2480,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
+    width: 2480,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
+  {
+    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
+    width: 4961,
+    height: 3508,
+    thumbnail: '/draw.webp',
+    deepZoomData: {
+      tileSize: 128,
+      maxZoomLevel: 20,
+      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
+      getTileUrl: 'hallo welt'
+    },
+  },
 
-  // {
-  //   deepZoomSrc: '/images/large-image2.jpg',
-  //   width: 5000,
-  //   height: 4000,
-  //   thumbnail: '/images/thumb2.jpg',
-  //   deepZoomData: {
-  //     tileSize: 256,
-  //     maxZoomLevel: 5,
-  //     getTileUrl: (level, x, y) => `/images/tiles/image2/${level}_${x}_${y}.jpg`,
-  //   },
-  // },
 ];
 
 const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp();
