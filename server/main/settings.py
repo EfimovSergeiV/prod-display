@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-yz^bz6nex0tx=*+m(hz$)ddn(jb7jur(fmo)0cf*y-j+-h2mjb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -38,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    # 'django_opensearch_dsl',
+    'draw.apps.DrawConfig',
 ]
 
 MIDDLEWARE = [

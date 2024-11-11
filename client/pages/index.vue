@@ -21,7 +21,7 @@
       <div>
 
         
-        <div class="mt-4 mb-24">
+        <div class="mt-4 mb-64 md:mb-24">
           <PhotoSwipeGallery />
         </div>
       </div>
@@ -30,16 +30,16 @@
 
 
     <div class=" fixed bottom-0 w-full">
-      <div class="grid grid-cols-3">
-        <div class="w-full bg-red-500 flex items-center justify-center py-4">
-          <p class="text-white font-semibold">BUTTON 1</p>
-        </div>
-        <div class="w-full bg-blue-500 flex items-center justify-center py-4">
-          <p class="text-white font-semibold">BUTTON 2</p>
-        </div>
-        <div class="w-full bg-green-500 flex items-center justify-center py-4">
-          <p class="text-white font-semibold">BUTTON 3</p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <button @click="removeDraw()" class="w-full bg-red-500 flex items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Удалить </p>
+        </button>
+        <nuxt-link :to="{ name: 'search' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Добавить</p>
+        </nuxt-link>
+        <button @click="completeDraw()" class="w-full bg-green-500 flex items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Отметить выполненным</p>
+        </button>
       </div>
     </div>
 

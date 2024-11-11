@@ -34,7 +34,7 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/5_ТМДР.084.083_СБ_рама_верхняя_К-1000_упращенная.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -46,7 +46,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.120.194_Кронштейн_под_пневматику.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -58,7 +58,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -70,7 +70,7 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -82,7 +82,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -94,7 +94,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -106,7 +106,7 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -118,7 +118,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -130,7 +130,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -142,7 +142,7 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -154,7 +154,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -166,7 +166,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -178,7 +178,7 @@ const images = [
     deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -190,7 +190,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
     width: 2480,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
@@ -202,7 +202,7 @@ const images = [
     deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
     width: 4961,
     height: 3508,
-    thumbnail: '/draw.webp',
+    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
     deepZoomData: {
       tileSize: 128,
       maxZoomLevel: 20,
