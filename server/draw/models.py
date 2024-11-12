@@ -17,7 +17,8 @@ class DrawingModel(models.Model):
     
     link = models.CharField(blank=True, null=True, max_length=255)
     pdf = models.FileField(upload_to='pdf/', blank=True, null=True)
-    webp = models.ImageField(upload_to='webp/', blank=True, null=True)    
+    webp = models.ImageField(upload_to='webp/', blank=True, null=True)
+    webp_size = models.JSONField(blank=True, null=True)
     prw = ResizedImageField(
         size = [420, None],
         upload_to='prw/',

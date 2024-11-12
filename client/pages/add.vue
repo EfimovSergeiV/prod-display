@@ -16,7 +16,24 @@
       method: 'POST',
       body: formData
     })
+
+    /// Получаем новый список чертежей
+    const { data: newDraws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws.value
     
+  }
+
+  const removeDraw = async (id) => {
+    const formData = new FormData()
+    formData.append('id', id)
+    const response = await fetch(`${config.public.baseURL}d/draw/`, {
+      method: 'DELETE',
+      body: formData
+    })
+
+    /// Получаем новый список чертежей
+    const { data: newDraws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws.value
   }
 
 </script>
@@ -54,32 +71,33 @@
 		</div>
 
 
-		<div class="container mx-auto px-4 py-4 ">
+		<div class="container mx-auto px-4 py-4 mb-20">
 
-      <div class="py-8">
+      <!-- <div class="py-8">
         <p class="text-[8px]">{{ draws }}</p>
-      </div>
+      </div> -->
 
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
         <div class="" v-for="draw in draws" :key="draw.id">
           
           <div class="py-2 flex items-center justify-center">
-            <img :src="draw.prw" alt="" class="" />
+            <img :src="draw.prw" alt="" class="h-[260px]" />
           </div>
           
           <!-- <img :src="draw.webp" alt="" /> -->
           <div class="py-2 flex items-center justify-center">
             <p class="">{{ draw.name }}</p>
           </div>
+
+          <button @click="removeDraw(draw.id)" class="py-2 flex items-center justify-center bg-red-500 w-full">
+            <p class="text-white">Удалить</p>
+          </button>
           
         </div>
 
       </div>
-
-
-
 
 
 		</div>

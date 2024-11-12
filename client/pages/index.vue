@@ -1,5 +1,7 @@
 <script setup>
+  const config = useRuntimeConfig()
 
+  const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
 
 
 </script>
@@ -22,7 +24,7 @@
 
         
         <div class="mt-4 mb-64 md:mb-24">
-          <PhotoSwipeGallery />
+          <PhotoSwipeGallery :draws="draws" />
         </div>
       </div>
 
@@ -35,7 +37,7 @@
           <p class="text-white font-semibold uppercase text-xl">Удалить </p>
         </button>
         <nuxt-link :to="{ name: 'add' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
-          <p class="text-white font-semibold uppercase text-xl">Добавить</p>
+          <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
         <button @click="completeDraw()" class="w-full bg-green-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Отметить выполненным</p>

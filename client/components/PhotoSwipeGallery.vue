@@ -1,7 +1,7 @@
 <template>
   <div class="gallery grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 ">
 
-      <a
+      <!-- <a
         v-for="(image, index) in images"
         :key="index"
         :href="image.deepZoomSrc"
@@ -18,6 +18,27 @@
           <p class="text-center text-gray-800">5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная</p>
         </div>
         
+      </a> -->
+
+      <a
+        v-for="(image, index) in draws"
+        :key="index"
+        :href="image.webp"
+        :data-pswp-width="image.webp_size.width"
+        :data-pswp-height="image.webp_size.height"
+        :data-deep-zoom="JSON.stringify(image.webp)"
+        class="gallery-item "
+      >
+        <div class="w-full flex items-center justify-center">
+          <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-[72px]" />          
+        </div>
+
+        <div class="flex items-center justify-center mt-2">
+          <p class="text-center text-gray-800">{{ image.name }}</p>
+        </div>
+        <div class="flex items-center justify-center mt-2">
+          <p class="text-center text-gray-800 text-xs">{{ image.webp_size.width }}x{{ image.webp_size.height }}</p>
+        </div>
       </a>
 
 
@@ -27,6 +48,9 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useNuxtApp } from '#app';
+
+const props = defineProps(['draws'])
+console.log(props.draws)
 
 // Пример массива изображений с параметрами Deep Zoom
 const images = [
