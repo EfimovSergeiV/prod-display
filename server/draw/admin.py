@@ -8,7 +8,7 @@ class FileAdmin(admin.ModelAdmin):
     list_display = ('name', 'link', )
     search_fields = ('name', 'link')
     list_filter = ('name', 'link')
-    readonly_fields = ('name', 'link',)
+    # readonly_fields = ('name', 'link',)
     fieldsets = (
         (None, {
             'fields': ('name', 'link',)

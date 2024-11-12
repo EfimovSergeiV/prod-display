@@ -34,7 +34,7 @@
         <button @click="removeDraw()" class="w-full bg-red-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Удалить </p>
         </button>
-        <nuxt-link :to="{ name: 'search' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
+        <nuxt-link :to="{ name: 'add' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Добавить</p>
         </nuxt-link>
         <button @click="completeDraw()" class="w-full bg-green-500 flex items-center justify-center py-6">
