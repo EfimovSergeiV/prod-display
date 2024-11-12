@@ -41,8 +41,15 @@
 
 <template>
 	<div class="">
-		<div class="container mx-auto px-4 py-4 ">
-			<p class="">Добавить чертежи в очередь</p>			
+		<div class="container mx-auto px-4">
+      <div class="flex items-center justify-between pt-2 pb-14">
+        <div class="">
+          <img src="/smlogo.png" alt="logo" class="" />
+        </div>
+        <div class="">
+           <p class="text-2xl text-gray-700 font-semibold uppercase">Чертежи к производству</p>
+        </div>
+      </div>		
 		</div>
 
 
@@ -78,22 +85,26 @@
       </div> -->
 
 
-      <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+      <div class="grid grid-cols-2 xl:grid-cols-5 gap-8 ">
 
-        <div class="" v-for="draw in draws" :key="draw.id">
-          
-          <div class="py-2 flex items-center justify-center">
-            <img :src="draw.prw" alt="" class="h-[260px]" />
+        <div v-for="draw in draws" :key="draw.id">
+          <div class="bg-white">
+            
+            <div class="py-2 w-full flex items-center justify-center">
+              <img :src="draw.prw" alt="" class="w-full" />
+            </div>
+            
+            <!-- <img :src="draw.webp" alt="" /> -->
+            <div class="py-2 w-full flex items-center justify-center">
+              <p class="text-center text-gray-800">{{ draw.name }}</p>
+            </div>
+
+            <button @click="removeDraw(draw.id)" class="py-2 flex items-center justify-center bg-red-500 w-full">
+              <p class="text-white">Удалить</p>
+            </button>            
           </div>
           
-          <!-- <img :src="draw.webp" alt="" /> -->
-          <div class="py-2 flex items-center justify-center">
-            <p class="">{{ draw.name }}</p>
-          </div>
 
-          <button @click="removeDraw(draw.id)" class="py-2 flex items-center justify-center bg-red-500 w-full">
-            <p class="text-white">Удалить</p>
-          </button>
           
         </div>
 

@@ -1,45 +1,28 @@
 <template>
-  <div class="gallery grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 ">
+  <div class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 ">
 
-      <!-- <a
-        v-for="(image, index) in images"
-        :key="index"
-        :href="image.deepZoomSrc"
-        :data-pswp-width="image.width"
-        :data-pswp-height="image.height"
-        :data-deep-zoom="JSON.stringify(image.deepZoomData)"
-        class="gallery-item "
-      >
-        <div class="w-full flex items-center justify-center">
-          <img :src="image.thumbnail" :alt="`Image ${index + 1}`" class="w-[72px]" />          
-        </div>
-
-        <div class="flex items-center justify-center mt-2">
-          <p class="text-center text-gray-800">5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная</p>
-        </div>
-        
-      </a> -->
-
-      <a
-        v-for="(image, index) in draws"
-        :key="index"
-        :href="image.webp"
-        :data-pswp-width="image.webp_size.width"
-        :data-pswp-height="image.webp_size.height"
-        :data-deep-zoom="JSON.stringify(image.webp)"
-        class="gallery-item "
-      >
-        <div class="w-full flex items-center justify-center">
-          <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-[72px]" />          
+    <a
+      v-for="(image, index) in draws"
+      :key="index"
+      :href="image.webp"
+      :data-pswp-width="image.webp_size.width"
+      :data-pswp-height="image.webp_size.height"
+      :data-deep-zoom="JSON.stringify(image.webp)"
+      class="gallery-item "
+    >
+      <div class="bg-white">
+        <div class="">
+          <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-full" />          
         </div>
 
         <div class="flex items-center justify-center mt-2">
           <p class="text-center text-gray-800">{{ image.name }}</p>
         </div>
-        <div class="flex items-center justify-center mt-2">
+        <!-- <div class="flex items-center justify-center mt-2">
           <p class="text-center text-gray-800 text-xs">{{ image.webp_size.width }}x{{ image.webp_size.height }}</p>
-        </div>
-      </a>
+        </div> -->
+      </div>
+    </a>
 
 
   </div>
@@ -50,192 +33,6 @@ import { onMounted } from 'vue';
 import { useNuxtApp } from '#app';
 
 const props = defineProps(['draws'])
-console.log(props.draws)
-
-// Пример массива изображений с параметрами Deep Zoom
-const images = [
-  {
-    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/5_ТМДР.084.083_СБ_рама_верхняя_К-1000_упращенная.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
-    width: 2480,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.120.194_Кронштейн_под_пневматику.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
-    width: 2480,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
-    width: 2480,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
-    width: 2480,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/5 ТМДР.084.083 СБ рама верхняя К-1000 упращенная.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.120.194 Кронштейн под пневматику.webp',
-    width: 2480,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-  {
-    deepZoomSrc: '/WEBP/8ТМДР.161.309 уголок 2 К-1000.webp',
-    width: 4961,
-    height: 3508,
-    thumbnail: '/WEBP/prw/8ТМДР.161.309_уголок_2_К-1000.webp',
-    deepZoomData: {
-      tileSize: 128,
-      maxZoomLevel: 20,
-      // getTileUrl: (level, x, y) => `/images/tiles/image1/${level}_${x}_${y}.jpg`,
-      getTileUrl: 'hallo welt'
-    },
-  },
-
-];
 
 const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp();
 
@@ -273,7 +70,6 @@ onMounted(() => {
 }
 
 .gallery-item img {
-  width: 150px;
   height: auto;
   cursor: pointer;
   object-fit: cover;

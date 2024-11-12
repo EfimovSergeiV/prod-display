@@ -3,6 +3,11 @@
 
   const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
 
+  const updateDraw = async () => {
+    const { data: newDraws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws.value
+  }
+
 
 </script>
 
@@ -12,17 +17,19 @@
     
 
     <div class="container mx-auto px-4">
-      <div class="py-4">
-        <p class="text-6xl text-blue-600 font-semibold">Drawing viewer</p>
-        <div class="px-1 py-2">
-          <p class="text-gray-700">Чертежи к производству</p>
-        </div>      
+      <div class="flex items-center justify-between pt-2 pb-14">
+        <div class="">
+          <img src="/smlogo.png" alt="logo" class="" />
+        </div>
+        <div class="">
+           <p class="text-2xl text-gray-700 font-semibold uppercase">Чертежи к производству</p>
+        </div>
       </div>
+
+
 
       
       <div>
-
-        
         <div class="mt-4 mb-64 md:mb-24">
           <PhotoSwipeGallery :draws="draws" />
         </div>
@@ -33,8 +40,8 @@
 
     <div class=" fixed bottom-0 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3">
-        <button @click="removeDraw()" class="w-full bg-red-500 flex items-center justify-center py-6">
-          <p class="text-white font-semibold uppercase text-xl">Удалить </p>
+        <button @click="updateDraw()" class="w-full bg-yellow-500 flex items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Обновить </p>
         </button>
         <nuxt-link :to="{ name: 'add' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
