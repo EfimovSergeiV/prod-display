@@ -9,7 +9,6 @@ from pdf2image import convert_from_path
 from PIL import Image
 
 
-
 from pdf2image import convert_from_path, convert_from_bytes
 from PIL import Image
 from io import BytesIO
@@ -33,13 +32,25 @@ class DrawingView(APIView):
     def delete(self, request):
         """ Удаление по ID """
         id = request.data.get('id')
+        print('ID: ', id)
 
-        if id:
-            try:
-                DrawingModel.objects.get(id=id).delete()
-                return Response(status=status.HTTP_200_OK)
-            except:
-                return Response(status=status.HTTP_404_NOT_FOUND)
+        try:
+            if str(id) == '0':
+                for item in DrawingModel.objects.all():
+                    item.prw.delete()
+                    item.webp.delete()
+                    item.pdf.delete()
+                    item.delete()
+            else:
+                qs = DrawingModel.objects.get(id=id)
+                qs.prw.delete()
+                qs.webp.delete()
+                qs.pdf.delete()
+                qs.delete()
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        return Response(status=status.HTTP_200_OK)
 
 
     def post(self, request):

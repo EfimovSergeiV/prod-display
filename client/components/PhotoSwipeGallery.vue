@@ -1,31 +1,36 @@
 <template>
-  <div class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 ">
+  <div>
+    <div class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 ">
 
-    <a
-      v-for="(image, index) in draws"
-      :key="index"
-      :href="image.webp"
-      :data-pswp-width="image.webp_size.width"
-      :data-pswp-height="image.webp_size.height"
-      :data-deep-zoom="JSON.stringify(image.webp)"
-      class="gallery-item "
-    >
-      <div class="bg-white">
-        <div class="">
-          <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-full" />          
-        </div>
+      <a
+        v-for="(image, index) in draws"
+        :key="index"
+        :href="image.webp"
+        :data-pswp-width="image.webp_size.width"
+        :data-pswp-height="image.webp_size.height"
+        :data-deep-zoom="JSON.stringify(image.webp)"
+        class="gallery-item "
+      >
+        <div class="bg-white">
+          <div class="">
+            <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-full" />          
+          </div>
 
-        <div class="flex items-center justify-center mt-2">
-          <p class="text-center text-gray-800">{{ image.name }}</p>
+          <div class="flex items-center justify-center mt-2">
+            <p class="text-center text-gray-800">{{ image.name }}</p>
+          </div>
+          <!-- <div class="flex items-center justify-center mt-2">
+            <p class="text-center text-gray-800 text-xs">{{ image.webp_size.width }}x{{ image.webp_size.height }}</p>
+          </div> -->
         </div>
-        <!-- <div class="flex items-center justify-center mt-2">
-          <p class="text-center text-gray-800 text-xs">{{ image.webp_size.width }}x{{ image.webp_size.height }}</p>
-        </div> -->
-      </div>
-    </a>
+      </a>
+
+
+    </div>
 
 
   </div>
+
 </template>
 
 <script setup>
