@@ -54,10 +54,10 @@
           </nuxt-link>        
         </div>
         <div class="">
-          <div class="flex items-center justify-end">
+          <div class="flex items-center justify-end pl-4">
 
             <div v-if="loading">
-              <p class="text-2xl text-gray-700 font-semibold uppercase">Загрузка...</p>
+              <p class="md:text-2xl text-gray-700 font-semibold uppercase">Загрузка...</p>
             </div>
             
             <div v-else>
@@ -114,7 +114,7 @@
         <button @click="removeDraw(0)" class="w-full bg-red-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">УДАЛИТЬ ВСЕ</p>
         </button>
-        <div class="w-full bg-blue-500 flex items-center justify-center py-6">
+        <div class="hidden w-full bg-blue-500 md:flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl"></p>
         </div>
         <nuxt-link :to="{ name: 'index' }" class="w-full bg-green-500 flex items-center justify-center py-6">

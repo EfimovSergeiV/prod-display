@@ -18,7 +18,7 @@
     intervalId = setInterval(() => {
       updateDraw()
       // console.log('updateDraw()');
-    }, 1000); // 5 минут = 300000 мс
+    }, 10000); // 5 минут = 300000 мс
   });
 
   onUnmounted(() => {
@@ -39,8 +39,8 @@
             <img src="/smlogo.png" alt="logo" class="" />          
           </nuxt-link>
         </div>
-        <div class="">
-           <p class="text-2xl text-gray-700 font-semibold uppercase">Чертежи к производству</p>
+        <div class="pl-4">
+           <p class="md:text-2xl text-gray-700 font-semibold uppercase">Чертежи к производству</p>
         </div>
       </div>
 
@@ -62,7 +62,7 @@
         <nuxt-link :to="{ name: 'add' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
-        <button @click="completeDraw()" class="w-full bg-green-500 flex items-center justify-center py-6">
+        <button @click="completeDraw()" class="hidden w-full bg-green-500 md:flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl"></p>
         </button>
       </div>

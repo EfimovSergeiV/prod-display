@@ -1,11 +1,13 @@
 ### Аппаратная часть
 
 Микрокомпьютер Raspberry Pi 4 Model B
-https://www.dns-shop.ru/product/a7af3b3d38283332/mikrokomputer-raspberry-pi-4-model-b/
-13 499 ₽
+https://www.chipdip.ru/product/raspberry-pi-4-model-b-4gb
+14 150 ₽
 
 БЛОК ПИТАНИЯ
 выходное напряжение - 5.1В, выходной ток - 2.5А,
+https://www.chipdip.ru/product0/8029156417?from=visited_product
+2 000 ₽
 
 Карта памяти Kingston Canvas Select Plus microSDXC 64 ГБ
 https://www.dns-shop.ru/product/28f87a399e421b80/karta-pamati-kingston-canvas-select-plus-microsdxc-64-gb-sdcs264gb/
@@ -19,7 +21,10 @@ https://www.dns-shop.ru/product/cedfb5afa14a2ff4/korpus-dla-mikrokomputera-acd-r
 https://www.citilink.ru/product/monitor-asus-21-5-vt229h-chernyi-ips-16-9-hdmi-m-m-mat-250cd-touch-1363561/
 27 890 ₽
 
-== 43289 ₽
+== 45289 ₽
+
+
+
 
 
 
