@@ -54,64 +54,71 @@ class DrawingView(APIView):
 
 
     def post(self, request):
+        """ Загрузка чертежей в очередь """
 
-        # Не работает с загрузкой из формы django
-        for pdf_file in request.FILES.getlist('files'):
-            print(f"Поле: {pdf_file}, Имя файла: {pdf_file.name}, Размер: {pdf_file.size}")
-            
-            pages = convert_from_bytes(pdf_file.read())
-            for i, page in enumerate(pages):
-                output_name = f"{str(pdf_file.name).replace('.pdf','')}{i + 1}" if i > 0 else f"{str(pdf_file.name).replace('.pdf','')}"
+        try:
+            # Не работает с загрузкой из формы django
+            for pdf_file in request.FILES.getlist('files'):
+                print(f"Поле: {pdf_file}, Имя файла: {pdf_file.name}, Размер: {pdf_file.size}")
 
-                webp_buffer = BytesIO()
-                page.save(webp_buffer, format='WEBP')
-                webp_buffer.seek(0)
-
-                # Получаем width и height изображения
-                width, height = page.size
-
-                webp_file = InMemoryUploadedFile(
-                    file=webp_buffer,
-                    field_name=None,
-                    name=f'{output_name}.webp',
-                    content_type='image/webp',
-                    size=sys.getsizeof(webp_buffer),
-                    charset=None,
-                )
-
-                prw_buffer = BytesIO()
-                thumbnail = page.copy()
-                thumbnail.thumbnail((420, 420))
-                thumbnail.save(prw_buffer, format='WEBP')
-                prw_buffer.seek(0)
-
-                prw_file = InMemoryUploadedFile(
-                    file=prw_buffer,
-                    field_name=None,
-                    name=f'{output_name}_preview.webp',
-                    content_type='image/webp',
-                    size=sys.getsizeof(prw_buffer),
-                    charset=None,
-                )
-
+                # Бросаем исключение если файл не PDF
+                if pdf_file.name.split('.')[-1] != 'pdf':
+                    print('Неверный формат файла')
+                    return Response({"error": "Неверный формат файла"},status=status.HTTP_400_BAD_REQUEST)
                 
-                # Подготовка данных для сериализатора
-                data = {
-                    'name': f'{output_name}', 
-                    'status': 'queue', 
-                    'link': None, 
-                    'webp': webp_file,
-                    'webp_size': {'width': width, 'height': height},
-                    'prw': prw_file,
-                    'pdf': pdf_file
-                }
+                pages = convert_from_bytes(pdf_file.read())
+                for i, page in enumerate(pages):
+                    output_name = f"{str(pdf_file.name).replace('.pdf','')}{i + 1}" if i > 0 else f"{str(pdf_file.name).replace('.pdf','')}"
 
-                serializer = self.serializer_class(data=data)
-                if serializer.is_valid():
-                    print('SERIALIZER DATA: ', serializer.validated_data)
-                    serializer.save()
-                else:
-                    print('SERIALIZER ERRORS: ', serializer.errors)
-                    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                    webp_buffer = BytesIO()
+                    page.save(webp_buffer, format='WEBP')
+                    webp_buffer.seek(0)
 
-        return Response(status=status.HTTP_200_OK)
+                    # Получаем width и height изображения
+                    width, height = page.size
+
+                    webp_file = InMemoryUploadedFile(
+                        file=webp_buffer,
+                        field_name=None,
+                        name=f'{output_name}.webp',
+                        content_type='image/webp',
+                        size=sys.getsizeof(webp_buffer),
+                        charset=None,
+                    )
+
+                    prw_buffer = BytesIO()
+                    thumbnail = page.copy()
+                    thumbnail.thumbnail((420, 420))
+                    thumbnail.save(prw_buffer, format='WEBP')
+                    prw_buffer.seek(0)
+
+                    prw_file = InMemoryUploadedFile(
+                        file=prw_buffer,
+                        field_name=None,
+                        name=f'{output_name}_preview.webp',
+                        content_type='image/webp',
+                        size=sys.getsizeof(prw_buffer),
+                        charset=None,
+                    )
+
+                    
+                    # Подготовка данных для сериализатора
+                    data = {
+                        'name': f'{output_name}', 
+                        'status': 'queue', 
+                        'link': None, 
+                        'webp': webp_file,
+                        'webp_size': {'width': width, 'height': height},
+                        'prw': prw_file,
+                        'pdf': pdf_file
+                    }
+
+                    serializer = self.serializer_class(data=data)
+                    if serializer.is_valid():
+                        print('SERIALIZER DATA: ', serializer.validated_data)
+                        serializer.save()
+                    else:
+                        print('SERIALIZER ERRORS: ', serializer.errors)
+                        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)

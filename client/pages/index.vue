@@ -59,7 +59,7 @@
         <button @click="updateDraw()" class="w-full bg-yellow-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Обновить </p>
         </button>
-        <nuxt-link :to="{ name: 'add' }" class="w-full bg-blue-500 flex items-center justify-center py-6">
+        <nuxt-link :to="{ name: 'add' }" class="w-full bg-teal-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
         <button @click="completeDraw()" class="hidden w-full bg-green-500 md:flex items-center justify-center py-6">

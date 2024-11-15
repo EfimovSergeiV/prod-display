@@ -114,7 +114,7 @@
         <button @click="removeDraw(0)" class="w-full bg-red-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">УДАЛИТЬ ВСЕ</p>
         </button>
-        <div class="hidden w-full bg-blue-500 md:flex items-center justify-center py-6">
+        <div class="hidden w-full bg-teal-500 md:flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl"></p>
         </div>
         <nuxt-link :to="{ name: 'index' }" class="w-full bg-green-500 flex items-center justify-center py-6">
