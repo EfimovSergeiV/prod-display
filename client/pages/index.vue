@@ -10,6 +10,12 @@
     draws.value = newDraws
   }
 
+  const shutdownDraw = async () => {
+    await $fetch(`${ config.public.baseURL }shutdown/`, {
+      method: 'GET'
+    })
+  }
+
 
   let intervalId;
 
@@ -56,15 +62,15 @@
 
     <div class=" fixed bottom-0 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3">
+        <button @click="shutdownDraw()" class="hidden w-full bg-red-500 md:flex items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Выключить</p>
+        </button>
         <button @click="updateDraw()" class="w-full bg-yellow-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Обновить </p>
         </button>
         <nuxt-link :to="{ name: 'add' }" class="w-full bg-teal-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
-        <button @click="completeDraw()" class="hidden w-full bg-green-500 md:flex items-center justify-center py-6">
-          <p class="text-white font-semibold uppercase text-xl"></p>
-        </button>
       </div>
     </div>
 

@@ -96,4 +96,10 @@ GRUB_TIMEOUT=0
 sudo update-grub
 ```
 
+```bash
+#Настроить безпарольный доступ для конкретной команды
 
+sudo visudo
+username ALL=(ALL) NOPASSWD: /usr/sbin/shutdown
+
+```
