@@ -11,9 +11,10 @@
   }
 
   const shutdownDraw = async () => {
-    await $fetch(`${ config.public.baseURL }shutdown/`, {
-      method: 'GET'
-    })
+    alert('Будем считать что выключили')
+    // await $fetch(`${ config.public.baseURL }shutdown/`, {
+    //   method: 'GET'
+    // })
   }
 
 
