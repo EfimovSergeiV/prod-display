@@ -63,15 +63,17 @@
 
     <div class=" fixed bottom-0 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3">
+        
         <button @click="shutdownDraw()" class="hidden w-full bg-red-500 md:flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Выключить</p>
         </button>
-        <button @click="updateDraw()" class="w-full bg-yellow-500 flex items-center justify-center py-6">
-          <p class="text-white font-semibold uppercase text-xl">Обновить </p>
-        </button>
-        <nuxt-link :to="{ name: 'add' }" class="w-full bg-teal-500 flex items-center justify-center py-6">
+        <nuxt-link :to="{ name: 'add' }" class="w-full  bg-yellow-500 flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
+        <button @click="updateDraw()" class="w-full flex bg-teal-500 items-center justify-center py-6">
+          <p class="text-white font-semibold uppercase text-xl">Отметить готовыми</p>
+        </button>
+
       </div>
     </div>
 
