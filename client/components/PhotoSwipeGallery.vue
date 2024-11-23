@@ -3,9 +3,11 @@
   import { useNuxtApp } from '#app';
 
   const config = useRuntimeConfig()
-  const props = defineProps(['draws', 'markready']);
+  const props = defineProps(['markready',]);
 
   const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp();
+
+  const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
 
   onMounted(() => {
     const lightbox = new $PhotoSwipeLightbox({
@@ -30,7 +32,31 @@
     lightbox.init();
   });
 
-  const draws = ref(props.draws);
+
+  const updateDraw = async () => {
+    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`, {
+      method: 'GET'
+    })
+    draws.value = newDraws
+  }
+
+
+  let intervalId;
+
+  onMounted(() => {
+    // Установить интервал каждые 5 минут
+    intervalId = setInterval(() => {
+      updateDraw()
+      // console.log('updateDraw()');
+    }, 10000); // 5 минут = 300000 мс
+  });
+
+  onUnmounted(() => {
+    // Очистить интервал, чтобы избежать утечек памяти
+    clearInterval(intervalId);
+  });
+
+
 
   const removeDraw = async (id) => {
     const formData = new FormData()
@@ -50,15 +76,14 @@
 
 
 <template>
-  <div>
-    <div class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8">
+  <div id="photoSwipeGallery">
 
-
-      <div v-for="(image, index) in draws" class="">
+    <transition-group name="fade" tag="div" mode="out-in" class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8" >
+      <div v-for="(image, index) in draws" :key="index" class="">
 
         <transition name="fade" mode="out-in">
           <div v-if="markready" class="absolute z-40">
-            <button @click="removeDraw(image.id)" class=" bg-green-500 px-4 py-4">
+            <button @click="removeDraw(image.id)" class=" bg-green-500 opacity-80 px-4 py-4">
               <p class="text-center text-white font-bold text-2xl md:text-2xl uppercase">Выполнен</p>
             </button>
           </div>          
@@ -88,16 +113,10 @@
           </div>
         </a>
 
-
       </div>
-
-
-
-    </div>
-
+    </transition-group>  
 
   </div>
-
 </template>
 
 
