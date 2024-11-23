@@ -37,8 +37,8 @@
     })
 
     /// Получаем новый список чертежей
-    const { data: newDraws } = await useFetch(`${ config.public.baseURL }d/draw/`)
-    draws.value = newDraws.value
+    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws
   }
 
 </script>
@@ -61,15 +61,22 @@
             </div>
             
             <div v-else>
-              <input id="newfile" type="file" multiple
-                class="block w-full text-sm text-slate-500
-                file:mr-4 file:py-2 file:px-4
-                file:rounded-full file:border-0
-                file:text-sm file:font-semibold
-                file:bg-sky-700 file:text-white
-                hover:file:bg-sky-800 transition-all duration-700"
-                @change="uploadFiles"
-              />           
+              <div class="">
+                <div class="py-2">
+                  <p class="text-base text-gray-700 font-semibold uppercase text-right">Загрузить PDF чертежи</p>
+                </div>
+                
+                <input id="newfile" type="file" multiple
+                  class="block w-full text-sm text-slate-500
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-sky-700 file:text-white
+                  hover:file:bg-sky-800 transition-all duration-700"
+                  @change="uploadFiles"
+                />                   
+              </div>
+        
             </div>
           
           </div>

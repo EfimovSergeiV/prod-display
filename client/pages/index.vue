@@ -34,7 +34,7 @@
   });
 
 
-  const markReady = ref(true)
+  const markReady = ref(false)
 
 </script>
 
@@ -42,7 +42,7 @@
 <template>
   <div class="flex flex-col justify-between">    
 
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 py-2">
       <div class="flex items-center justify-between pt-2 pb-8">
         <div class="">
           <nuxt-link :to="{ name: 'index' }">

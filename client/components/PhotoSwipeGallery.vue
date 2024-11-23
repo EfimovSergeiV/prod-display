@@ -3,7 +3,6 @@
   import { useNuxtApp } from '#app';
 
   const config = useRuntimeConfig()
-
   const props = defineProps(['draws', 'markready']);
 
   const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp();
@@ -31,6 +30,8 @@
     lightbox.init();
   });
 
+  const draws = ref(props.draws);
+
   const removeDraw = async (id) => {
     const formData = new FormData()
     formData.append('id', id)
@@ -38,6 +39,11 @@
       method: 'DELETE',
       body: formData
     })
+
+    /// Получаем новый список чертежей
+    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws
+
   }
 
 </script>
@@ -46,14 +52,14 @@
 <template>
   <div>
     <div class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8">
-      
+
 
       <div v-for="(image, index) in draws" class="">
 
         <transition name="fade" mode="out-in">
           <div v-if="markready" class="absolute z-40">
-            <button @click="removeDraw(image.id)" class=" bg-green-500 px-4 py-2">
-              <p class="text-center text-white font-bold text-2xl md:text-4xl uppercase">Выполнен</p>
+            <button @click="removeDraw(image.id)" class=" bg-green-500 px-4 py-4">
+              <p class="text-center text-white font-bold text-2xl md:text-2xl uppercase">Выполнен</p>
             </button>
           </div>          
         </transition>
@@ -67,8 +73,6 @@
           class="gallery-item "
         >
 
-
-
           <div class="bg-white">
             
             <div class="">
@@ -76,9 +80,6 @@
                 <img :src="image.prw" :alt="`Image ${index + 1}`" class="w-full" />          
               </div>
             </div>
-
-
-
 
             <div class="flex items-center justify-center mt-2">
               <p class="text-center text-gray-800">{{ image.name }}</p>
