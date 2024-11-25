@@ -73,6 +73,8 @@ Name=Chrome Fullscreen
 
 
 ```bash
+# LightDM и LXDE
+
 sudo nano /etc/lightdm/lightdm.conf
 
 # Найдите секцию [Seat:*] и добавьте или измените строки:

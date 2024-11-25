@@ -79,12 +79,13 @@
   <div id="photoSwipeGallery">
 
     <transition-group name="fade" tag="div" mode="out-in" class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8" >
-      <div v-for="(image, index) in draws" :key="index" class="">
+      <div v-for="(image, index) in draws" :key="index" class="relative">
 
         <transition name="fade" mode="out-in">
-          <div v-if="markready" class="absolute z-40">
-            <button @click="removeDraw(image.id)" class=" bg-green-500 opacity-80 px-4 py-4">
-              <p class="text-center text-white font-bold text-2xl md:text-2xl uppercase">Выполнен</p>
+          <div v-if="markready" class="absolute z-40 w-full">
+            <button @click="removeDraw(image.id)" class=" bg-green-500 opacity-90 px-4 py-2 w-full">
+              <p class="text-center text-white font-bold text-xl md:text-xl uppercase">Отметить</p>
+              <p class="text-center text-white font-bold text-xl md:text-xl uppercase">выполненным</p>
             </button>
           </div>          
         </transition>
