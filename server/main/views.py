@@ -11,5 +11,7 @@ class ControlView(APIView):
     """ Управление сервером """
 
     def get(self, request):
-        os.system("sudo /usr/sbin/shutdown now")
+        password = "123456"
+        command = f"echo {password} | sudo -S /usr/sbin/shutdown now"
+        os.system(command)
         return Response(status=status.HTTP_200_OK)
