@@ -13,8 +13,7 @@ print('СТАТУС СЕРВЕРОВ: ', server_status, client_status)
 
 if server_status == 200 and client_status == 200:
     
-    subprocess.run(["firefox-esr --kiosk http://mon1.local"])
-
+    subprocess.run(["firefox-esr", "--kiosk", "http://mon1.local"])
 
 
 
