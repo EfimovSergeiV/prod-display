@@ -7,6 +7,14 @@ from rest_framework.response import Response
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
+
+class StatusView(APIView):
+    """ Возвращает статус сервера 200"""
+
+    def get(self, request):
+        return Response(status=status.HTTP_200_OK)
+
+
 class ControlView(APIView):
     """ Управление сервером """
 

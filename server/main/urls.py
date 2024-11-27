@@ -20,11 +20,12 @@ from django.urls import path, include
 from main import settings
 from django.conf.urls.static import static
 
-from main.views import ControlView
+from main.views import StatusView, ControlView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', StatusView.as_view()),
     path('shutdown/', ControlView.as_view()),
 
     path('d/', include('draw.urls')),
