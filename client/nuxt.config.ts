@@ -45,8 +45,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      // baseURL: 'http://127.0.0.1:8000/',
-      baseURL: 'http://mon1.local:8080/',
+      baseURL: 'http://127.0.0.1:8000/',
+      // baseURL: 'http://mon1.local:8080/',
     },
   },
 })

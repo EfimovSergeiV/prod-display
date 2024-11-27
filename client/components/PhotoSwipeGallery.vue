@@ -48,7 +48,7 @@
     intervalId = setInterval(() => {
       updateDraw()
       // console.log('updateDraw()');
-    }, 10000); // 5 минут = 300000 мс
+    }, 5000); // 5 минут = 300000 мс
   });
 
   onUnmounted(() => {
@@ -72,6 +72,21 @@
 
   }
 
+
+  const completeDraw = async (id) => {
+    const formData = new FormData()
+    formData.append('id', id)
+    const response = await $fetch(`${config.public.baseURL}d/draw/`, {
+      method: 'PUT',
+      body: formData
+    })
+
+    /// Получаем новый список чертежей
+    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    draws.value = newDraws
+
+  }
+
 </script>
 
 
@@ -83,7 +98,7 @@
 
         <transition name="fade" mode="out-in">
           <div v-if="markready" class="absolute z-40 w-full">
-            <button @click="removeDraw(image.id)" class=" bg-green-500 opacity-90 px-4 py-2 w-full">
+            <button @click="completeDraw(image.id)" class=" bg-green-500 opacity-90 px-4 py-2 w-full">
               <p class="text-center text-white font-bold text-xl md:text-xl uppercase">Отметить</p>
               <p class="text-center text-white font-bold text-xl md:text-xl uppercase">выполненным</p>
             </button>

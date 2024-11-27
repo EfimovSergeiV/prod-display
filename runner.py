@@ -18,16 +18,3 @@ while True:
     print('ОЖИДАНИЕ - СТАТУС СЕРВЕРОВ: ', server_status, client_status)
     sleep(10)
 
-
-
-
-# os.system("firefox-esr --kiosk http://mon1.local:8000")
-
-"""
-[Desktop Entry]
-Type=Application
-Exec=firefox --kiosk
-Hidden=false
-X-LXDE-Autostart-enabled=true
-Name=Firefox Fullscreen
-"""

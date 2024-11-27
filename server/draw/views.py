@@ -2,13 +2,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from main.mattermost import mattermost_notification
 from draw.serializers import DrawingSerializer
 from draw.models import DrawingModel
 
 from pdf2image import convert_from_path
 from PIL import Image
 
-
+import datetime
 from pdf2image import convert_from_path, convert_from_bytes
 from PIL import Image
 from io import BytesIO
@@ -16,6 +17,8 @@ import sys
 
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
+
+
 
 class DrawingView(APIView):
     """ Приём чертежей в очередь, отображение """
@@ -49,6 +52,19 @@ class DrawingView(APIView):
                 qs.delete()
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        return Response(status=status.HTTP_200_OK)
+    
+
+    def put(self, request):
+        """ Обновление статуса чертежа """
+        qs = DrawingModel.objects.get(id=request.data.get('id'))
+        qs.prw.delete()
+        qs.webp.delete()
+        qs.pdf.delete()
+        qs.delete()
+
+        mattermost_notification('draw_completed', {'name': qs.name, 'now_time': datetime.datetime.now().strftime('%d.%m.%Y %H:%M')})
         
         return Response(status=status.HTTP_200_OK)
 

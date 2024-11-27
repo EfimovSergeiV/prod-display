@@ -105,3 +105,24 @@ sudo visudo
 username ALL=(ALL) NOPASSWD: /usr/sbin/shutdown
 
 ```
+
+
+```bash
+# Настройка курсора в LXDE
+
+sudo cat /usr/share/icons/default/index.theme
+[Icon Theme]
+Inherits=Adwaita
+
+# Распаковываем курсоры
+unzip DMZhaloA32.zip 
+sudo mv DMZhaloA32 /usr/share/icons
+
+sudo nano /usr/share/icons/default/index.theme
+[Icon Theme]
+Inherits=DMZhaloA32
+
+
+
+
+```
