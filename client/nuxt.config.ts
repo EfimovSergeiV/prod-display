@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-05',
+  compatibilityDate: '2024-04-10',
   devtools: { enabled: false },
 
   app: {
@@ -45,8 +45,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: 'http://127.0.0.1:8000/',
-      // baseURL: 'http://mon1.local:8080/',
+      // baseURL: 'http://127.0.0.1:8000/',
+      baseURL: 'http://mon1.local:8080/',
     },
   },
 })

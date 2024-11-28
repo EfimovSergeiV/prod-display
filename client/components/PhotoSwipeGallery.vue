@@ -139,11 +139,11 @@
 
 
 <style scoped>
-.gallery {
-  /* display: flex;
+/* .gallery {
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px; */
-}
+  gap: 20px;
+} */
 
 .gallery-item img {
   height: auto;
