@@ -2,10 +2,11 @@
   import { onMounted } from 'vue';
   import { useNuxtApp } from '#app';
 
+  const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp()
   const config = useRuntimeConfig()
   const props = defineProps(['markready',]);
 
-  const { $PhotoSwipeLightbox, $PhotoSwipeDeepZoom } = useNuxtApp();
+  
 
   const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
 
@@ -33,11 +34,18 @@
   });
 
 
+  const backendFail = ref(false)
   const updateDraw = async () => {
-    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`, {
-      method: 'GET'
+    await $fetch(`${ config.public.baseURL }d/draw/`, {
+      method: 'GET',
+      timeout: 300
+    }).then((response) => {
+      draws.value = response
+      backendFail.value = false
+    }).catch((error) => {
+      draws.value = []
+      backendFail.value = true
     })
-    draws.value = newDraws
   }
 
 
@@ -91,8 +99,14 @@
 
 
 <template>
-  <div id="photoSwipeGallery">
+  
+  <div v-if="backendFail" class="">
+    <div class="">
+      <p class="text-center text-red-500 font-bold text-xl md:text-2xl uppercase">СЕРВЕР НЕ ОТВЕЧАЕТ</p>
+    </div>
+  </div>
 
+  <div v-else id="photoSwipeGallery">
     <transition-group name="fade" tag="div" mode="out-in" class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8" >
       <div v-for="(image, index) in draws" :key="index" class="relative">
 
