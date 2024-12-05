@@ -93,7 +93,12 @@ Name=Firefox Fullscreen
 
 
 sudo nano /etc/default/grub
+
+GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=0"
+GRUB_CMDLINE_LINUX=""
 
 sudo update-grub
 ```
@@ -123,6 +128,13 @@ sudo nano /usr/share/icons/default/index.theme
 Inherits=DMZhaloA32
 
 
+
+
+```
+
+```bash
+
+lxappearance
 
 
 ```
