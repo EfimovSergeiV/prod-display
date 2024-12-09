@@ -43,7 +43,6 @@
       draws.value = response
       backendFail.value = false
     }).catch((error) => {
-      draws.value = []
       backendFail.value = true
     })
   }
@@ -100,13 +99,18 @@
 
 <template>
   
-  <div v-if="backendFail" class="">
-    <div class="">
-      <p class="text-center text-red-500 font-bold text-xl md:text-2xl uppercase">СЕРВЕР НЕ ОТВЕЧАЕТ</p>
-    </div>
-  </div>
 
-  <div v-else id="photoSwipeGallery">
+
+  <div id="photoSwipeGallery relative">
+
+    <transition name="fade" mode="out-in">
+      <div v-if="backendFail" class="fixed z-50 top-0 left-0 w-full">
+        <div class="flex items-center justify-center py-8">
+          <p class="text-center text-red-500 font-bold text-xl md:text-2xl uppercase">НЕТ ОТВЕТА ОТ СЕРВЕРА</p>
+        </div>
+      </div>    
+    </transition>
+
     <transition-group name="fade" tag="div" mode="out-in" class="gallery grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8" >
       <div v-for="(image, index) in draws" :key="index" class="relative">
 

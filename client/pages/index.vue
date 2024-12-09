@@ -49,7 +49,7 @@
           </nuxt-link>
         </div>
         <div class="pl-4">
-           <p class="md:text-2xl text-gray-700 font-semibold uppercase">Чертежи к производству</p>
+           <p class="md:text-2xl text-gray-700 font-semibold uppercase"></p>
         </div>
       </div>
 
