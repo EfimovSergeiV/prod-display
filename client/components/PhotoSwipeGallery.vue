@@ -8,7 +8,7 @@
 
   
 
-  const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+  const { data: draws } = await useFetch(`${ config.public.baseURL }draws/list/`)
 
   onMounted(() => {
     const lightbox = new $PhotoSwipeLightbox({
@@ -36,7 +36,7 @@
 
   const backendFail = ref(false)
   const updateDraw = async () => {
-    await $fetch(`${ config.public.baseURL }d/draw/`, {
+    await $fetch(`${ config.public.baseURL }draws/list/`, {
       method: 'GET',
       timeout: 300
     }).then((response) => {
@@ -68,28 +68,28 @@
   const removeDraw = async (id) => {
     const formData = new FormData()
     formData.append('id', id)
-    const response = await $fetch(`${config.public.baseURL}d/draw/`, {
+    const response = await $fetch(`${config.public.baseURL}draws/list/`, {
       method: 'DELETE',
       body: formData
     })
 
     /// Получаем новый список чертежей
-    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    const newDraws = await $fetch(`${ config.public.baseURL }draws/list/`)
     draws.value = newDraws
 
   }
 
 
-  const completeDraw = async (id) => {
+  const completeDraw = async (uuid) => {
     const formData = new FormData()
-    formData.append('id', id)
-    const response = await $fetch(`${config.public.baseURL}d/draw/`, {
+    formData.append('uuid', uuid)
+    const response = await $fetch(`${config.public.baseURL}draws/list/`, {
       method: 'PUT',
       body: formData
     })
 
     /// Получаем новый список чертежей
-    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    const newDraws = await $fetch(`${ config.public.baseURL }draws/list/`)
     draws.value = newDraws
 
   }
@@ -101,7 +101,7 @@
   
 
 
-  <div id="photoSwipeGallery relative">
+  <div id="photoSwipeGallery relative select-none">
 
     <transition name="fade" mode="out-in">
       <div v-if="backendFail" class="fixed z-50 top-0 left-0 w-full">
@@ -116,7 +116,7 @@
 
         <transition name="fade" mode="out-in">
           <div v-if="markready" class="absolute z-40 w-full">
-            <button @click="completeDraw(image.id)" class=" bg-green-500 opacity-90 px-4 py-2 w-full">
+            <button @click="completeDraw(image.uuid)" class=" bg-green-500 opacity-90 px-4 py-2 w-full active:bg-green-600">
               <p class="text-center text-white font-bold text-xl md:text-xl uppercase">Отметить</p>
               <p class="text-center text-white font-bold text-xl md:text-xl uppercase">выполненным</p>
             </button>

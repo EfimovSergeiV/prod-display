@@ -2,7 +2,7 @@
   const config = useRuntimeConfig()
 
 
-  const { data: draws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+  const { data: draws } = await useFetch(`${ config.public.baseURL }draws/list/`)
 
   const loading = ref(false)
 
@@ -16,28 +16,28 @@
     for (let i = 0; i < event.target.files.length; i++) {
       formData.append('files', event.target.files[i])
     }
-    const response = await fetch(`${config.public.baseURL}d/draw/`, {
+    const response = await fetch(`${config.public.baseURL}draws/list/`, {
       method: 'POST',
       body: formData
     })
 
     /// Получаем новый список чертежей
-    const { data: newDraws } = await useFetch(`${ config.public.baseURL }d/draw/`)
+    const { data: newDraws } = await useFetch(`${ config.public.baseURL }draws/list/`)
     draws.value = newDraws.value
     loading.value = false
     
   }
 
-  const removeDraw = async (id) => {
+  const removeDraw = async (uuid) => {
     const formData = new FormData()
-    formData.append('id', id)
-    const response = await $fetch(`${config.public.baseURL}d/draw/`, {
+    formData.append('uuid', uuid)
+    const response = await $fetch(`${config.public.baseURL}draws/list/`, {
       method: 'DELETE',
       body: formData
     })
 
     /// Получаем новый список чертежей
-    const newDraws = await $fetch(`${ config.public.baseURL }d/draw/`)
+    const newDraws = await $fetch(`${ config.public.baseURL }draws/list/`)
     draws.value = newDraws
   }
 
@@ -45,7 +45,7 @@
 
 
 <template>
-	<div class="">
+	<div class="select-none">
 		<div class="container mx-auto px-4">
       <div class="flex items-center justify-between pt-2 pb-2">
         <div class="">
@@ -63,7 +63,7 @@
             <div v-else>
               <div class="">
                 <div class="py-2">
-                  <p class="text-base text-gray-700 font-semibold uppercase text-right">Загрузить PDF чертежи</p>
+                  <p class="text-base text-gray-700 font-semibold uppercase text-right">Загрузить PDF файлы</p>
                 </div>
                 
                 <input id="newfile" type="file" multiple
@@ -94,7 +94,7 @@
       <div>
 
         <transition-group name="fade" tag="div" class="grid grid-cols-2 xl:grid-cols-5 gap-8 ">
-          <div v-for="draw in draws" :key="draw.id">
+          <div v-for="draw in draws" :key="draw.uuid">
             <div class="bg-white">
               
               <div class="py-2 w-full flex items-center justify-center">
@@ -105,7 +105,7 @@
                 <p class="text-center text-gray-800">{{ draw.name }}</p>
               </div>
 
-              <button @click="removeDraw(draw.id)" class="py-2 flex items-center justify-center bg-red-500 w-full">
+              <button @click="removeDraw(draw.uuid)" class="py-2 flex items-center justify-center bg-red-500 w-full active:bg-red-600">
                 <p class="text-white">Удалить</p>
               </button>            
             </div>
@@ -118,13 +118,13 @@
 
     <div class=" fixed z-50 bottom-0 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3">
-        <button @click="removeDraw(0)" class="w-full bg-red-500 flex items-center justify-center py-6">
+        <button @click="removeDraw(0)" class="w-full bg-red-500 flex items-center justify-center py-6 active:bg-red-600">
           <p class="text-white font-semibold uppercase text-xl">УДАЛИТЬ ВСЕ</p>
         </button>
         <div class="hidden w-full bg-teal-500 md:flex items-center justify-center py-6">
           <p class="text-white font-semibold uppercase text-xl"></p>
         </div>
-        <nuxt-link :to="{ name: 'index' }" class="w-full bg-green-500 flex items-center justify-center py-6">
+        <nuxt-link :to="{ name: 'index' }" class="w-full bg-green-500 flex items-center justify-center py-6 active:bg-green-600">
           <p class="text-white font-semibold uppercase text-xl">СОХРАНИТЬ</p>
         </nuxt-link>
       </div>

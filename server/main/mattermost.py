@@ -32,7 +32,7 @@ def send_message(channel_id, message):
 templates = {
 
 "draw_completed" : """
-**{{ now_time }}** - **{{ name }}** помечен как выполненный.
+**{{ completed_at }}** - **{{ name }}** помечен как выполненный.
 """,
 
 

@@ -20,5 +20,5 @@ from django.urls import path
 from draw.views import DrawingView
 
 urlpatterns = [
-    path('draw/', DrawingView.as_view(), name='draw'),
+    path('list/', DrawingView.as_view(), name='list'),
 ]

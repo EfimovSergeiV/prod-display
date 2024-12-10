@@ -28,5 +28,5 @@ urlpatterns = [
     path('', StatusView.as_view()),
     path('shutdown/', ControlView.as_view()),
 
-    path('d/', include('draw.urls')),
+    path('draws/', include('draw.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

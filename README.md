@@ -150,3 +150,25 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 ```
+
+
+
+### Ошибки на промышленных ПК
+
+```log
+ACPI BIOS Error (bug): Could not resolve symbol [\_SB._OSC.CDW1].
+AE_NOT_FOUND
+ACPI Error: Aborting method \_SB._OSC due to previous error (AE_NOT_FOUND)
+```
+
+```bash
+sudo nano /etc/default/grub
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=0"
+GRUB_CMDLINE_LINUX=""
+
+sudo update-grub
+```

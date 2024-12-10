@@ -39,7 +39,7 @@
 
 
 <template>
-  <div class="flex flex-col justify-between">    
+  <div class="flex flex-col justify-between select-none">    
 
     <div class="container mx-auto px-4 py-2">
       <div class="flex items-center justify-between pt-2 pb-8">
@@ -66,18 +66,18 @@
     <div class=" fixed z-50 bottom-0 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3">
         
-        <button @click="shutdownDraw()" class="hidden w-full bg-red-500 md:flex items-center justify-center py-6">
+        <button @click="shutdownDraw1()" class="hidden w-full bg-red-500 md:flex items-center justify-center py-6 active:bg-red-600">
           <p class="text-white font-semibold uppercase text-xl">Выключить</p>
         </button>
-        <nuxt-link :to="{ name: 'add' }" class="w-full  bg-yellow-500 flex items-center justify-center py-6">
+        <nuxt-link :to="{ name: 'add' }" class="w-full  bg-yellow-500 flex items-center justify-center py-6 active:bg-yellow-400">
           <p class="text-white font-semibold uppercase text-xl">Редактировать</p>
         </nuxt-link>
         <div class="">
                       
-          <button v-if="markReady" @click="markReady = !markReady" class="w-full flex bg-teal-500 items-center justify-center py-6">
+          <button v-if="markReady" @click="markReady = !markReady" class="w-full flex bg-teal-500 items-center justify-center py-6 active:bg-teal-600">
             <p class="text-white font-semibold uppercase text-xl">Режим просмотра</p>
           </button>
-          <button v-else @click="markReady = !markReady" class="w-full flex bg-green-500 items-center justify-center py-6">
+          <button v-else @click="markReady = !markReady" class="w-full flex bg-green-500 items-center justify-center py-6 active:bg-green-600">
             <p class="text-white font-semibold uppercase text-xl">Отметить выполнеными</p>
           </button>
 

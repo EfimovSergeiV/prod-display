@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django_resized import ResizedImageField
 
@@ -11,6 +12,7 @@ class DrawingModel(models.Model):
         ('completed', 'Выполнен'),
     )
 
+    uuid = models.UUIDField(verbose_name="UUID", primary_key=True, default=uuid.uuid4, unique=True)
     name = models.CharField(max_length=255)
     status = models.CharField(max_length=15, default='queue', choices=DRAWNING_STATUS)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -6,22 +6,17 @@ from main.mattermost import mattermost_notification
 from draw.serializers import DrawingSerializer
 from draw.models import DrawingModel
 
-from pdf2image import convert_from_path
-from PIL import Image
-
-import datetime
-from pdf2image import convert_from_path, convert_from_bytes
-from PIL import Image
-from io import BytesIO
 import sys
-
+import datetime
+from io import BytesIO
+from pdf2image import convert_from_path, convert_from_bytes
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 
 class DrawingView(APIView):
-    """ Приём чертежей в очередь, отображение """
+    """ Методы оъектов работы с объектами чертежей """
 
     serializer_class = DrawingSerializer
 
@@ -33,19 +28,17 @@ class DrawingView(APIView):
     
 
     def delete(self, request):
-        """ Удаление по ID """
-        id = request.data.get('id')
-        print('ID: ', id)
+        uuid = request.data.get('uuid')
 
         try:
-            if str(id) == '0':
+            if str(uuid) == '0':
                 for item in DrawingModel.objects.all():
                     item.prw.delete()
                     item.webp.delete()
                     item.pdf.delete()
                     item.delete()
             else:
-                qs = DrawingModel.objects.get(id=id)
+                qs = DrawingModel.objects.get(uuid=uuid)
                 qs.prw.delete()
                 qs.webp.delete()
                 qs.pdf.delete()
@@ -57,22 +50,27 @@ class DrawingView(APIView):
     
 
     def put(self, request):
-        """ Обновление статуса чертежа """
-        qs = DrawingModel.objects.get(id=request.data.get('id'))
+        qs = DrawingModel.objects.get(uuid=request.data.get('uuid'))
         qs.prw.delete()
         qs.webp.delete()
         qs.pdf.delete()
         qs.delete()
 
-        mattermost_notification('draw_completed', {'name': qs.name, 'now_time': datetime.datetime.now().strftime('%d.%m.%Y %H:%M')})
-        
-        return Response(status=status.HTTP_200_OK)
+        response_data = {
+            "uuid": qs.uuid,
+            "name": qs.name,
+            "status": "completed",
+            "completed_at": datetime.datetime.now().strftime('%d.%m.%Y %H:%M')
+        }
+
+        mattermost_notification('draw_completed', {'name': response_data['name'], 'completed_at': response_data['completed_at']})
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
     def post(self, request):
-        """ Загрузка чертежей в очередь """
-
         try:
+            writed_draws = []
             # Не работает с загрузкой из формы django
             for pdf_file in request.FILES.getlist('files'):
                 print(f"Поле: {pdf_file}, Имя файла: {pdf_file.name}, Размер: {pdf_file.size}")
@@ -117,7 +115,6 @@ class DrawingView(APIView):
                         charset=None,
                     )
 
-                    
                     # Подготовка данных для сериализатора
                     data = {
                         'name': f'{output_name}', 
@@ -131,10 +128,14 @@ class DrawingView(APIView):
 
                     serializer = self.serializer_class(data=data)
                     if serializer.is_valid():
-                        print('SERIALIZER DATA: ', serializer.validated_data)
                         serializer.save()
+                        writed_draws.append(serializer.data)
+                    
                     else:
                         print('SERIALIZER ERRORS: ', serializer.errors)
                         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                      
+            return Response(writed_draws, status=status.HTTP_201_CREATED)
+
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
