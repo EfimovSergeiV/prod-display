@@ -4,6 +4,7 @@ Mattermost notification
 
 
 import requests
+from time import sleep
 from django.template import Template, Context
 from main.conf import BOT_TOKEN, MATTERMOST_URL, CHANNEL_ID
 
@@ -19,11 +20,20 @@ def send_message(channel_id, message):
         'channel_id': channel_id,
         'message': message
     }
-    response = requests.post(url, headers=headers, json=payload)
-    if response.status_code == 201:
-        print("Сообщение успешно отправлено!")
-    else:
-        print(f"Ошибка отправки сообщения: {response.status_code} - {response.text}")
+
+    attempt_to_send = 5
+
+    # HotfiX
+    while attempt_to_send > 0:
+        attempt_to_send -= 1
+        try:
+            response = requests.post(url, headers=headers, json=payload)
+            if response.status_code == 201:
+                break
+            else:
+                sleep(5)
+        except:
+            sleep(5)
 
 
 
